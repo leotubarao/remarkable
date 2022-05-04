@@ -1,4 +1,5 @@
 import slugify from 'slugify';
+import { parseStringPromise } from 'xml2js';
 
 import { ICardCar } from '~/types';
 
@@ -42,3 +43,30 @@ export function onFormatVehicle(vehicle: CardCarFunc): ICardCar {
     SimilarVehicles: SimilarVehicles[0].split(','),
   };
 }
+
+export const formatVehicles = async (data: ICardCar[]): Promise<ICardCar[]> => {
+  const {
+    Vehicles: { Vehicle: listVehicles },
+  } = await parseStringPromise(data);
+
+  const formattedVehicles = listVehicles.map((item: ICardCar) =>
+    onFormatVehicle(item),
+  );
+
+  return formattedVehicles;
+};
+
+export const formatVehicle = async (
+  data: ICardCar[],
+  localSlug: string,
+): Promise<ICardCar> => {
+  const {
+    Vehicles: { Vehicle: listVehicles },
+  } = await parseStringPromise(data);
+
+  const vehicle: ICardCar = listVehicles
+    .map((item: ICardCar) => onFormatVehicle(item))
+    .find(({ slug }: ICardCar) => slug === localSlug);
+
+  return vehicle;
+};

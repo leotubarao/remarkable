@@ -7,6 +7,7 @@ import { Button } from '~/components/Button';
 import { CardCar } from '~/components/CardCar';
 import { ImageCover } from '~/components/ImageCover';
 import { bodyClass, loadVehicles } from '~/libs';
+import { formatVehicles } from '~/libs/formatVehicle';
 import { ICardCar } from '~/types';
 
 interface HomeProps {
@@ -154,7 +155,7 @@ const Home: React.FC<HomeProps> = ({ vehicles }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await loadVehicles();
+  const data = await formatVehicles(await loadVehicles(true));
 
   return {
     props: {
