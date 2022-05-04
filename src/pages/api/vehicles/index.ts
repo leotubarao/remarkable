@@ -1,8 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { parseStringPromise } from 'xml2js';
 
-import { onFormatVehicle, loadVehicles } from '~/libs';
-import { ICardCar } from '~/types';
+import { loadVehicles, formatVehicles } from '~/libs';
 
 export default async (
   request: NextApiRequest,
@@ -18,15 +16,7 @@ export default async (
 
     const data = await loadVehicles(true);
 
-    const {
-      Vehicles: { Vehicle: listVehicles },
-    } = await parseStringPromise(data);
-
-    const formattedVehicles = listVehicles.map((item: ICardCar) =>
-      onFormatVehicle(item),
-    );
-
-    return response.status(200).json(formattedVehicles);
+    return response.status(200).json(await formatVehicles(data));
   } catch (error) {
     return response
       .status(500)

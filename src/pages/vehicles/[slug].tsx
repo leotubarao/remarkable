@@ -7,7 +7,8 @@ import Head from 'next/head';
 import { ButtonBack } from '~/components/ButtonBack';
 import { Features } from '~/components/Features';
 import { SliderCar } from '~/components/SliderCar';
-import { bodyClass, getVehicle, loadVehicles, titleHead } from '~/libs';
+import { bodyClass, loadVehicles, titleHead } from '~/libs';
+import { formatVehicle, formatVehicles } from '~/libs/formatVehicle';
 import { ICardCar } from '~/types';
 
 interface VehicleProps {
@@ -29,6 +30,7 @@ const Vehicle: React.FC<VehicleProps> = ({ vehicle }) => {
 
     return stars;
   }, []);
+  if (!vehicle) return null;
 
   return (
     <>
@@ -188,7 +190,7 @@ const Vehicle: React.FC<VehicleProps> = ({ vehicle }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await loadVehicles();
+  const data = await formatVehicles(await loadVehicles(true));
 
   const paths = data.map((vehicle: ICardCar) => {
     return {
@@ -206,7 +208,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params;
-  const data = await getVehicle(slug);
+  const data = await formatVehicle(
+    await loadVehicles(true),
+    typeof slug === 'string' ? slug : slug.length && slug[0],
+  );
 
   return {
     props: {

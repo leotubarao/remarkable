@@ -7,6 +7,7 @@ import Head from 'next/head';
 import { CardCar } from '~/components/CardCar';
 import { Features } from '~/components/Features';
 import { bodyClass, loadVehicles, titleHead } from '~/libs';
+import { formatVehicles } from '~/libs/formatVehicle';
 import { ICardCar } from '~/types';
 
 interface VehiclesProps {
@@ -40,7 +41,7 @@ const Vehicles: React.FC<VehiclesProps> = ({ vehicles }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await loadVehicles();
+  const data = await formatVehicles(await loadVehicles(true));
 
   return {
     props: {
