@@ -12,8 +12,6 @@ interface CardCarProps {
 }
 
 export const CardCar: React.FC<CardCarProps> = ({ item }) => {
-  const title = `${item.ManuYear} ${item.Manufacturer} ${item.Model} ${item.Variant}`;
-
   return (
     <Col xs="12" sm="6" xl="3" className="d-flex mt-5">
       <Card className="card flex-grow-1">
@@ -26,7 +24,7 @@ export const CardCar: React.FC<CardCarProps> = ({ item }) => {
           }}
         />
         <div className="card-body">
-          <h3 className="card-title fs-5">{title}</h3>
+          <h3 className="card-title fs-5">{item.title}</h3>
           <h4 className="card-text fs-3 text-primary fw-bolder">
             {`$${item.RetailPriceAmountInclDisplay}`}
           </h4>
