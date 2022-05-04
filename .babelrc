@@ -5,10 +5,11 @@
       "styled-components",
       {
         "ssr": true,
+        "namespace": "ltco",
         "displayName": true,
-        "preprocess": false
+        "preprocess": false,
+        "meaninglessFileNames": ["index", "styles"]
       }
-    ],
-    "inline-react-svg"
+    ]
   ]
 }

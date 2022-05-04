@@ -1,0 +1,8 @@
+.carousel-item {
+  height: 300px;
+  object-fit: cover;
+
+  @include media-breakpoint-up(lg) {
+    height: 500px;
+  }
+}

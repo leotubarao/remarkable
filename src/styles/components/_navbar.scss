@@ -1,0 +1,28 @@
+.navbar {
+  @extend .py-4;
+  @extend .bg-white;
+
+  @include media-breakpoint-up(sm) {
+    .vehicles & {
+      border-bottom: 1px solid ltco_color('gray-500');
+      margin-bottom: 3rem;
+    }
+  }
+
+  &-brand svg,
+  &-brand img {
+    @include media-breakpoint-down(sm) {
+      max-width: 180px;
+    }
+  }
+
+  &-nav {
+    .nav-link {
+      @extend .text-center;
+
+      @include media-breakpoint-up(lg) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
