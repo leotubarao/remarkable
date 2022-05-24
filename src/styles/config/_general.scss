@@ -139,6 +139,10 @@ main.ltco_main {
   }
 }
 
+.ltco_btn_stretched {
+  min-width: 200px;
+}
+
 .ltco_error {
   filter: grayscale(1);
   opacity: 0.3;
