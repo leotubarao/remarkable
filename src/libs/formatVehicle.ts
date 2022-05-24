@@ -3,7 +3,7 @@ import { parseStringPromise } from 'xml2js';
 
 import { ICardCar } from '~/types';
 
-type CardCarFunc = Omit<ICardCar, 'slug' | 'title'>;
+type CardCarFunc = Omit<ICardCar, 'id' | 'slug' | 'title' | 'images'>;
 
 export function onFormatVehicle(vehicle: CardCarFunc): ICardCar {
   const {
@@ -21,7 +21,6 @@ export function onFormatVehicle(vehicle: CardCarFunc): ICardCar {
   } = vehicle;
 
   const vehicleIdFormatted = VehicleId[0].split('-')[0];
-
   const title = `${ManuYear} ${Manufacturer} ${Model} ${Variant}`.trim();
 
   const imagesFormatted = ImageIndexList[0]
@@ -44,10 +43,16 @@ export function onFormatVehicle(vehicle: CardCarFunc): ICardCar {
   };
 }
 
-export const formatVehicles = async (data: ICardCar[]): Promise<ICardCar[]> => {
+const formatXML2JSON = async (data: any): Promise<any> => {
   const {
-    Vehicles: { Vehicle: listVehicles },
+    Vehicles: { Vehicle: response },
   } = await parseStringPromise(data);
+
+  return response;
+};
+
+export const formatVehicles = async (data: ICardCar[]): Promise<ICardCar[]> => {
+  const listVehicles = await formatXML2JSON(data);
 
   const formattedVehicles = listVehicles.map((item: ICardCar) =>
     onFormatVehicle(item),
@@ -60,9 +65,7 @@ export const formatVehicle = async (
   data: ICardCar[],
   localSlug: string,
 ): Promise<ICardCar> => {
-  const {
-    Vehicles: { Vehicle: listVehicles },
-  } = await parseStringPromise(data);
+  const listVehicles = await formatXML2JSON(data);
 
   const vehicle: ICardCar = listVehicles
     .map((item: ICardCar) => onFormatVehicle(item))
