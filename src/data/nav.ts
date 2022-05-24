@@ -11,6 +11,11 @@ export const menuHeader: INavMenu[] = [
     href: '/vehicles',
     value: 'Vehicles',
   },
+  {
+    id: 2,
+    href: '/contact',
+    value: 'Contact',
+  },
 ];
 
 export const menuFooter: INavMenu[] = [
@@ -23,5 +28,15 @@ export const menuFooter: INavMenu[] = [
     id: 1,
     href: '/about',
     value: 'About Us',
+  },
+  {
+    id: 2,
+    href: '/finance',
+    value: 'Finance',
+  },
+  {
+    id: 3,
+    href: '/contact',
+    value: 'Contact',
   },
 ];
