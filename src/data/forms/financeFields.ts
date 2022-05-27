@@ -1,13 +1,6 @@
-export interface InputsForm {
-  name: string;
-  id?: string;
-  placeholder?: string;
-  label?: string;
-  fullRow?: boolean;
-  as?: 'input' | 'select' | 'textarea' | 'check';
-}
+import { IFieldProps } from '~/types';
 
-export const inputsForm: InputsForm[] = [
+export const financeFields: IFieldProps[] = [
   {
     name: 'name',
     placeholder: 'Full name',
@@ -123,6 +116,7 @@ export const inputsForm: InputsForm[] = [
     name: 'credicCheck',
     label: '*I agree to a Credit Check',
     as: 'check',
+    value: false,
   },
   {
     id: 'test1',
@@ -130,5 +124,6 @@ export const inputsForm: InputsForm[] = [
     label:
       "by submitting an expres application we will not complete a credit check, one of our consultants will review your information and contact you with the best option's available for you. We will get back to you within 1 hour during business hours.",
     as: 'check',
+    value: false,
   },
 ];
