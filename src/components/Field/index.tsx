@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormControl } from 'react-bootstrap';
 
-import { IField } from '~/types/components/FIeld';
+import { IField } from '~/types';
 
 import { Checkbox } from '../Checkbox';
 import { Select } from '../Select';
