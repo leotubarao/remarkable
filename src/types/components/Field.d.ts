@@ -5,9 +5,9 @@ import {
   FormSelectProps,
 } from 'react-bootstrap';
 
-import { InputsForm } from '~/data/inputsForm';
+import { IFieldProps } from '../utils/Field';
 
-export type IField = InputsForm &
+export type IField = IFieldProps &
   FormControlProps &
   FormSelectProps &
   FormCheckProps &
