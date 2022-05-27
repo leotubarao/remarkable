@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 import Head from 'next/head';
 
 import { Features } from '~/components/Features';
-import { bodyClass, titleHead } from '~/libs';
+import { bodyClass, titleHead } from '~/utils';
 
 import { FormFinance } from '../../components/Forms/FormFinance';
 

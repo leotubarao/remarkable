@@ -7,9 +7,14 @@ import Head from 'next/head';
 import { ButtonBack } from '~/components/ButtonBack';
 import { Features } from '~/components/Features';
 import { SliderCar } from '~/components/SliderCar';
-import { bodyClass, loadVehicles, titleHead } from '~/libs';
-import { formatVehicle, formatVehicles } from '~/libs/formatVehicle';
 import { ICardCar } from '~/types';
+import {
+  bodyClass,
+  formatVehicle,
+  formatVehicles,
+  loadVehicles,
+  titleHead,
+} from '~/utils';
 
 interface VehicleProps {
   vehicle: ICardCar;

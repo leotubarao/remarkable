@@ -6,9 +6,8 @@ import { GetStaticProps } from 'next';
 import { Button } from '~/components/Button';
 import { CardCar } from '~/components/CardCar';
 import { ImageCover } from '~/components/ImageCover';
-import { bodyClass, loadVehicles } from '~/libs';
-import { formatVehicles } from '~/libs/formatVehicle';
 import { ICardCar } from '~/types';
+import { bodyClass, formatVehicles, loadVehicles } from '~/utils';
 
 interface HomeProps {
   vehicles: ICardCar[];

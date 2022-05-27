@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { formatVehicle, loadVehicles } from '~/libs';
+import { formatVehicle, loadVehicles } from '~/utils';
 
 export default async (
   request: NextApiRequest,

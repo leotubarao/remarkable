@@ -5,7 +5,7 @@ import Head from 'next/head';
 
 import { Features } from '~/components/Features';
 import { ImageCover } from '~/components/ImageCover';
-import { bodyClass, titleHead } from '~/libs';
+import { bodyClass, titleHead } from '~/utils';
 
 const About: React.FC = () => {
   useEffect(() => {

@@ -6,9 +6,8 @@ import Head from 'next/head';
 
 import { CardCar } from '~/components/CardCar';
 import { Features } from '~/components/Features';
-import { bodyClass, loadVehicles, titleHead } from '~/libs';
-import { formatVehicles } from '~/libs/formatVehicle';
 import { ICardCar } from '~/types';
+import { bodyClass, formatVehicles, loadVehicles, titleHead } from '~/utils';
 
 interface VehiclesProps {
   vehicles: ICardCar[];
