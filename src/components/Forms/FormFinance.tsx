@@ -5,43 +5,14 @@ import classNames from 'classnames';
 import { useFormik } from 'formik';
 
 import { Field } from '~/components/Field';
-import { validateFinance } from '~/libs';
+import { financeFields } from '~/data/forms';
+import { IFieldProps } from '~/types';
+import { initialValuesForm, validateFinance } from '~/utils';
 
-import { InputsForm, inputsForm } from '../../data/inputsForm';
 import { SubmitButton } from '../SubmitButton';
 
 export const FormFinance: React.FC = () => {
-  const initialValues = {
-    name: '',
-    gender: '',
-    bday: '',
-    dependents: '',
-    maritalStatus: '',
-    residentialStatus: '',
-    streetAddress: '',
-    weekRent: '',
-    longLived: '',
-    previousAddress: '',
-    workPhone: '',
-    mobile: '',
-    email: '',
-    occupationIndustry: '',
-    permanence: '',
-    employer: '',
-    jobTime: '',
-    homePay: '',
-    otherIncome: '',
-    muchIncome: '',
-    previousJob: '',
-    licenseType: '',
-    licenseNumber: '',
-    licenseExpiry: '',
-    versionNumber: '',
-    vehicleInterested: '',
-    nzResident: '',
-    credicCheck: false,
-    test1: false,
-  };
+  const initialValues = initialValuesForm(financeFields);
 
   const onSubmitForm = useCallback((values, { setSubmitting }) => {
     setTimeout(() => {
@@ -63,7 +34,7 @@ export const FormFinance: React.FC = () => {
       onSubmit={formik.handleSubmit}
       noValidate
     >
-      {inputsForm.map((input: InputsForm, index: number) => {
+      {financeFields.map((input: IFieldProps, index: number) => {
         if (input.name === 'credicCheck' || input.name === 'test1') return;
 
         return (
