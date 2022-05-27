@@ -1,29 +1,32 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { transporter } from '~/core/mailer';
+import { libraryMailer } from '~/data/forms';
 
 export default async (
   request: NextApiRequest,
   response: NextApiResponse,
 ): Promise<void | NextApiResponse<any>> => {
   try {
-    const { method } = request;
+    const { method, body } = request;
 
     if (method !== 'POST') {
       response.setHeader('Allow', ['POST']);
       return response.status(405).end(`Method ${method} Not Allowed`);
     }
 
-    const fieldFormatted = Object.entries(request.body.fields).map(
-      ([key, value]) => {
-        return `<p>${key}: ${value}</p>`;
-      },
-    );
+    const fieldFormatted = Object.entries(body.fields).map(([key, value]) => {
+      const { placeholder } = libraryMailer.find(({ name }) => key === name);
+
+      if (!placeholder || !value) return;
+
+      return `<p><strong>${placeholder}:</strong> ${value}</p>`;
+    });
 
     await transporter.sendMail({
       from: process.env.MAILER_FROM,
       to: process.env.MAILER_TO,
-      subject: request.body.subject,
+      subject: body.subject,
       html: [
         `<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
         ...fieldFormatted,
