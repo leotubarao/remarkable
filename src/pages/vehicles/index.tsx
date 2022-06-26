@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 
 import { CardCar } from '~/components/CardCar';
 import { Features } from '~/components/Features';
+import { Head } from '~/components/Head';
 import { ICardCar } from '~/types';
-import { bodyClass, formatVehicles, loadVehicles, titleHead } from '~/utils';
+import { bodyClass, formatVehicles, loadVehicles } from '~/utils';
 
 interface VehiclesProps {
   vehicles: ICardCar[];
@@ -20,9 +20,7 @@ const Vehicles: React.FC<VehiclesProps> = ({ vehicles }) => {
 
   return (
     <>
-      <Head>
-        <title>{titleHead('Vehicles')}</title>
-      </Head>
+      <Head title="Vehicles" />
 
       <Features />
 

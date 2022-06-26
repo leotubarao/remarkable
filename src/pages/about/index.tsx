@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 
-import Head from 'next/head';
-
 import { Features } from '~/components/Features';
+import { Head } from '~/components/Head';
 import { ImageCover } from '~/components/ImageCover';
-import { bodyClass, titleHead } from '~/utils';
+import { bodyClass } from '~/utils';
 
 const About: React.FC = () => {
   useEffect(() => {
@@ -14,9 +13,7 @@ const About: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>{titleHead('About us')}</title>
-      </Head>
+      <Head title="About us" />
 
       <div className="ltco_wrapper">
         <div className="ltco_wrapper__content">
