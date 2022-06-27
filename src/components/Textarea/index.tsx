@@ -10,18 +10,23 @@ interface ITextarea {
 type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> &
   ITextarea;
 
-export const Textarea: React.FC<TextareaProps> = ({ feedback, ...rest }) => {
+export const Textarea: React.FC<TextareaProps> = ({
+  feedback,
+  className,
+  ...rest
+}) => {
   return (
-    <FormGroup>
+    <>
       <textarea
         className={classNames({
           ['form-control']: true,
+          [`${className}`]: !!className,
           ['is-invalid']: !!feedback,
         })}
         {...rest}
       />
 
       <FormControl.Feedback type="invalid">{feedback}</FormControl.Feedback>
-    </FormGroup>
+    </>
   );
 };
