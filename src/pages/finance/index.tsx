@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 
-import Head from 'next/head';
-
 import { Features } from '~/components/Features';
-import { bodyClass, titleHead } from '~/utils';
+import { Head } from '~/components/Head';
+import { bodyClass } from '~/utils';
 
 import { FormFinance } from '../../components/Forms/FormFinance';
 
@@ -15,9 +14,7 @@ const Finance: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>{titleHead('Apply For Finance')}</title>
-      </Head>
+      <Head title="Apply For Finance" />
 
       <Container className="py-5 fs-4">
         <p className="mb-0">
@@ -26,6 +23,7 @@ const Finance: React.FC = () => {
           finance so you can drive away today.
         </p>
       </Container>
+
       <div className="bg-primary text-white">
         <Container className="py-5 fs-4">
           <p className="fs-3 fw-bold">Express Finance Application Form</p>

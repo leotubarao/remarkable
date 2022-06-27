@@ -3,6 +3,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import { HeroAboutUs } from '../HeroAboutUs';
+import { HeroContact } from '../HeroContact';
 import { HeroFinance } from '../HeroFinance';
 import { HeroVehicles } from '../HeroVehicles';
 import { Navbar } from '../Navbar';
@@ -18,6 +19,7 @@ export const Header: React.FC = () => {
       {asPath === '/vehicles' && <HeroVehicles />}
       {asPath === '/about' && <HeroAboutUs />}
       {asPath === '/finance' && <HeroFinance />}
+      {asPath === '/contact' && <HeroContact />}
     </>
   );
 };

@@ -2,10 +2,10 @@ import React, { useCallback, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 
 import { ButtonBack } from '~/components/ButtonBack';
 import { Features } from '~/components/Features';
+import { Head } from '~/components/Head';
 import { SliderCar } from '~/components/SliderCar';
 import { ICardCar } from '~/types';
 import {
@@ -13,7 +13,6 @@ import {
   formatVehicle,
   formatVehicles,
   loadVehicles,
-  titleHead,
 } from '~/utils';
 
 interface VehicleProps {
@@ -39,9 +38,7 @@ const Vehicle: React.FC<VehicleProps> = ({ vehicle }) => {
 
   return (
     <>
-      <Head>
-        <title>{titleHead(vehicle.title)}</title>
-      </Head>
+      <Head title={vehicle.title} />
 
       <Container className="pb-5">
         <header className="row align-items-end border-bottom pb-3 mb-3">
